@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="libs/fontawesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="libs/jquery.min.js"></script>
+    <title>Lập trình mạng</title>
+</head>
+<body>
+    <div class="home-div center-align white-text"> 
+        <span>Ứng dụng Chat Text  - Call video Online</span>
+        <button class="waves-effect transparent waves-light btn logout">Đăng xuất</button>
+        <span>Chào <i><%= username %></i></span>
+        <div class="buttons">
+            <a class="waves-effect transparent waves-light btn create-room">Tạo Phòng</a>
+            <a class="waves-effect transparent waves-light btn join-room">Vào phòng</a>
+        </div>
+        <div class="room-code">
+            <form id="room-code-form">
+                <div class="input-field">
+                    <input id="room" type="text" required class="validate">
+                    <label for="room">Room Code</label>
+                </div>
+                <button class="waves-effect transparent waves-light btn enter-room" type="submit" name="action">Vào phòng</button>
+            </form>
+
+            
+        </div>
+
+        <ul class="list-room">
+
+        </ul>
+    </div>
+
+
+    <div class="chat-div">
+        <div class="grid header-grid">
+            <div class="row">
+                <div class="col s6">
+                    <a href="/"><span>Chat Video Online</span></a>
+                </div>
+                <div class="col s6 right-align chat-room">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="fixed-action-btn click-to-toggle">
+            <a class="btn-floating indigo">
+                <i class="fa fa-sliders-h" aria-hidden="true"></i>
+            </a>
+            <ul>
+                <li><button id="full-screen-btn"  class="btn-floating tooltipped grey" data-position="right" data-delay="50" data-tooltip="Fullscreen"><i class="fa fa-arrows-alt" aria-hidden="true"></i></button></li>
+                <li><button id="mute-chat" data-position="right" data-delay="50" data-tooltip="Tắt âm" class="btn-floating grey tooltipped"><i class="fa fa-bell" aria-hidden="true"></i></button></li>
+                <li><button id="disconnect-btn" data-position="right" data-delay="50" data-tooltip="Ngắn kết nối" class="btn-floating red tooltipped"><i class="fa fa-phone" aria-hidden="true"></i></button></li>
+                <li><button id="mute-btn" data-position="right" data-delay="50" data-tooltip="Tắt Mic" class="btn-floating grey tooltipped"><i class="fa fa-microphone" aria-hidden="true"></i></button></li>
+                <li><button id="hide-video" data-position="right" data-delay="50" data-tooltip="Tắt Video" class="btn-floating grey tooltipped"><i class="fa fa-eye" aria-hidden="true"></i></button></li>
+            </ul>
+        </div>
+        <div class="grid video-grid">
+            <div class="row">
+                <div class="col l8">
+                    <div class="waiting-div center-align">
+                        <h4>Đang đợi kết nối...</h4>
+                        <div class="loader">Loading...</div>
+                    </div>
+                    <div class="connecting-div center-align">
+                        <h4>Đang kết nối...</h4>
+                    </div>
+                    <div class="disconnected-div center-align">
+                        <h4>Mất kết nối!</h4>
+                        <p style="font-size: 120%;">Người dùng đã thoát...</p>
+                        <div class="loader">Loading...</div>
+                    </div>
+                    <video id="myVideo" muted class="responsive-video"></video>
+                    <video id="remoteVideo" class="responsive-video"></video>
+                </div>
+                <div class="col l4">
+                </div>
+            </div>
+        </div>
+        <div class="text-div">
+            <div class="chat-box">
+                
+            </div>
+            <form id="chat-form">
+                <div class="grid input-grid">
+                    <div class="row">
+                        <div class="input-field col s10">
+                            <textarea id="chat-message" data-emojiable="true" disabled type="text" class="validate"></textarea>
+                            <label for="chat-message">SMS</label>
+                        </div>
+                        <div class="col s2 valign-wrapper">
+                            <div class="file-field input-field">
+                                <div disabled="true" class="waves-effect waves-light btn-floating indigo attach-file">
+                                    <i class="fa fa-paperclip" aria-hidden="true"></i>
+                                    <input type="file">
+                                </div>
+                            </div>
+                            
+                            <button type="submit" disabled class="waves-effect waves-light btn-floating indigo send-message"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div> 
+    <div class="audio-div">
+        <audio id="receive-message" src="assets/send-message.ogg"></audio>
+    </div>
+    <script src="libs/materialize/js/materialize.min.js"></script>
+    <script src="libs/socket.io.slim.js"></script>
+    <script src="libs/socket.io.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
